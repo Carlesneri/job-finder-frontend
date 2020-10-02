@@ -1,21 +1,20 @@
 <script>
-    export let job 
-
-    const cards = document.querySelectorAll('.card')
-
-    const randomColor = () => Math.floor(Math.random()*360)
-
-    cards.forEach(card => {
-        card.style.backgroundColor = `hsl(${randomColor()}, 50%, 50%)`
-    })
+    export let job, i
 
     function openLink(link){
         window.open(link, "_blank")
     }
+
+    function getRandomBackground(){
+        const card = document.querySelector(`.card-${i}`)
+    
+        const randomColor = () => Math.floor(Math.random()*360)
+        card.style.backgroundColor = `hsl(${randomColor()}, 40%, 60%)`
+    }
     
 </script>
 
-<div on:click={() => openLink(job.link)} class="card">
+<div on:click={openLink(job.link)} class="card card-{i}" on:load={getRandomBackground()}>
     <div class="card-title">
         <h3>
             {job.title}
@@ -35,15 +34,15 @@
 	.card{
         cursor: pointer;
         color: #222;
-        margin: 1rem;
+        margin: .35rem;
         padding: 1rem;
 		border-radius: 7px;
-		width: 10rem;
-        height: 11rem;
-        box-shadow:  2px 2px 3px #555;
+		width: 15rem;
+        height: 10rem;
+        box-shadow:  2px 2px 5px rgba(170, 170, 170, 0.5);
         overflow: hidden;
-        font-size: .8em;
-        font-weight: lighter;
+        /* font-size: .8em; */
+        /* font-weight: lighter; */
         display: flex;
         flex-direction: column;
 	}
