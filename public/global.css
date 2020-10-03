@@ -5,6 +5,16 @@
 	font-family: 'Piazzolla', serif;
 }
 
+a{
+	color: inherit;
+	text-decoration: none;
+	transition: all .3s;
+}
+a:hover{
+	color: white;
+	font-weight: bold;
+}
+
 body{
 	color: #eee;
 	min-height: 100vh;
