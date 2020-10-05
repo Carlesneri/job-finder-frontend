@@ -3,9 +3,8 @@
 
     let isModal = false
 
-    function showModal(modal){
+    function changeModal(modal){
         isModal = modal
-        console.log(isModal)
     }
 
 </script>
@@ -14,10 +13,10 @@
     <p>
         <a href="mailto:buscadorempleoweb@gmail.com">contacto</a>
     </p>
-    <p class="link" on:click={() => showModal('legal')}>aviso legal</p>
+    <p class="link" on:click={() => changeModal('legal')}>aviso legal</p>
 
     {#if isModal}
-        <Modal modal={isModal} />
+        <Modal modal={isModal} {changeModal}/>
 
     {/if}
 </footer>

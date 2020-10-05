@@ -23,6 +23,6 @@ body{
 	/*Gradient*/
 	background: #297aa3;  /* fallback for old browsers */
 	background: -webkit-linear-gradient(to top left, #297aa3, hsl(200, 70%, 50%));   /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to top left, hsl(200, 60%, 40%), hsl(200, 70%, 50%));/*  W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to top left, #297aa3, hsl(200, 70%, 50%));/*  W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
