@@ -1,16 +1,41 @@
+<script>
+    import Modal from './Modal.svelte'
+
+    let isModal = false
+
+    function showModal(modal){
+        isModal = modal
+        console.log(isModal)
+    }
+
+</script>
+
 <footer>
-    <a href="mailto:buscadorempleo@gmail.com">contacto</a>
+    <p>
+        <a href="mailto:buscadorempleoweb@gmail.com">contacto</a>
+    </p>
+    <p class="link" on:click={() => showModal('legal')}>aviso legal</p>
+
+    {#if isModal}
+        <Modal modal={isModal} />
+
+    {/if}
 </footer>
 
 <style>
     footer{
-        margin-top: 1rem;
+        position: relative;
+        /* margin-top: 1rem; */
         background-color: hsla(0, 0%, 100%, 0.15);
         border-top: 2px solid #ccc;
-        min-height: 5rem; 
+        height: 5rem; 
         display: flex;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
+    }
+    footer p:not(:nth-of-type(1))::before{
+        content: '|';
+        margin: 0 1rem;
     }
 </style>

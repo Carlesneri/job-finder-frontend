@@ -9,7 +9,9 @@
 
     let bgColor = randomColor()
 
-    const daysAgo = Math.floor((Date.now() - job.createdAt) / (1000 * 60 * 60 * 24))
+
+    const hoursAgo = Math.floor((Date.now() - job.createdAt) / (1000 * 60 * 60))
+    const daysAgo = Math.floor(hoursAgo / 24)
 
 </script>
 
@@ -30,7 +32,8 @@
     <div class="card-footer">
         {#if daysAgo < 1}
             <small>
-                Desde hoy 
+                Desde hace {hoursAgo} horas
+                <!-- Desde hoy  -->
             </small>
         {:else if  daysAgo < 2}
             <small>
@@ -46,20 +49,19 @@
 
 <style>
 	.card{
-        /* position: relative; */
         cursor: pointer;
         color: #222;
-        background-color: hsl(var(--bg-color), 40%, 60%);
-        margin: .4rem;
+        background-image: linear-gradient(to bottom right, hsl(var(--bg-color), 50%, 70%), hsl(var(--bg-color), 40%, 60%));
+        margin: .6rem;
         padding: 1rem;
 		border-radius: 7px;
 		width: 15rem;
         height: 10rem;
-        box-shadow:  1px 1px 3px rgba(170, 170, 170, 0.5);
+        box-shadow:  0px 5px 15px -10px white;
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         transition: all .2s ease;
         -moz-transition: all .2s ease;
         -webkit-transition: all .2s ease;
@@ -68,32 +70,42 @@
     .card:hover{
         background-color: hsl(var(--bg-color), 50%, 75%);
         min-height: 10rem;
-        height: 13rem;
+        height: 15rem;
+        justify-content: flex-start;
     }
     .card-title{
-        min-height: 3em;
-        max-height: 30%;
+        height: 4rem;
         overflow: hidden;
         margin: 0 .3em;
     }
-    .card-body{
-        max-height: 55%;
+    .card:hover .card-title{
+        height: auto
     }
     .card-body h5{
-        max-height: 50%;
-        min-height: 1em;
+        height: 1.5rem;
         overflow: hidden;
         margin: 0 .3em;
     }
+    .card:hover .card-body h5{
+        height: auto
+    }
     .card-body p{
-        min-height: 1em;
-        max-height: 50%;
+        height: 1.5rem;
         overflow: hidden;
         margin: .3em;
     }
+    .card:hover .card-body p{
+        height: auto
+    }
     .card-footer{
-        min-height: 1em;
-        max-height: 15%;
-        margin: .3em;
+        font-weight: bold;
+        height: 1.5rem;
+        overflow: hidden;
+        margin: 0 .3em;
+        flex-shrink: 1;
+    }
+    .card:hover .card-footer{
+        height: auto;
+        margin-top: auto;
     }
 </style>
