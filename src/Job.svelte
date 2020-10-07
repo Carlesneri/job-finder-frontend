@@ -1,4 +1,6 @@
 <script>
+    import { scale } from 'svelte/transition'
+
     export let job
 
     function openLink(link){
@@ -15,7 +17,7 @@
 
 </script>
 
-<div on:click={openLink(job.link)} class="card" style="--bg-color: {bgColor}">
+<div on:click={openLink(job.link)} class="card" style="--bg-color: {bgColor}" transition:scale >
     <div class="card-title">
         <h3>
             {job.title}
@@ -30,20 +32,21 @@
         </p>
     </div>
     <div class="card-footer">
+        <small>
         {#if daysAgo < 1}
-            <small>
+            {#if hoursAgo < 1}
+                Añadido ahora
+            {:else if hoursAgo === 1}
+                Desde hace 1 hora
+            {:else}
                 Desde hace {hoursAgo} horas
-                <!-- Desde hoy  -->
-            </small>
+            {/if}
         {:else if  daysAgo < 2}
-            <small>
                 Desde ayer 
-            </small>
         {:else}
-            <small>
                 Desde hace {daysAgo} días
-            </small>
         {/if}
+        </small>
     </div>
 </div>
 
@@ -62,10 +65,10 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        transition: all .2s ease;
-        -moz-transition: all .2s ease;
-        -webkit-transition: all .2s ease;
-        -o-transition: all .2s ease;
+        transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        -webkit-transition: all .3s ease;
+        -o-transition: all .3s ease;
     }
     .card:hover{
         background-color: hsl(var(--bg-color), 50%, 75%);
@@ -77,6 +80,9 @@
         height: 4rem;
         overflow: hidden;
         margin: 0 .3em;
+    }
+    .card-title h3{
+        margin-top: 0;
     }
     .card:hover .card-title{
         height: auto
@@ -107,5 +113,11 @@
     .card:hover .card-footer{
         height: auto;
         margin-top: auto;
+    }
+
+    @media (max-width: 500px){
+        .card, .card-title, .card-body h5, .card-body p, .card-footer{
+            height: auto;
+        }
     }
 </style>

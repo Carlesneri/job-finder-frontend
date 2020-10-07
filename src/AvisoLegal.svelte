@@ -1,4 +1,6 @@
-
+<script>
+    export let changeModal
+</script>
 
 <h2>
     Aviso Legal
@@ -9,8 +11,8 @@
     </h3>
     <p>
         En cumplimiento del artículo 10 de la Ley 34 / 2002, de 11 de julio, de Servicios de la Sociedad de la Información y Comercio Electrónico, el Titular expone sus datos identificativos.
-            Correo electrónico: <a href="mailto:thecrafterplace@gmail.com">thecrafterplace@gmail.com</a> 
-            Sitio Web: <a href="/">thecrafterplace.com</a> 
+            Correo electrónico: <a href="mailto:buscadorempleoweb@gmail.com">buscadorempleoweb@gmail.com</a> 
+            Sitio Web: <a href="/">buscadorempleo.org</a> 
     </p>
 </section>
 <section>
@@ -18,7 +20,7 @@
         Finalidad
     </h3>
     <p>
-        La finalidad del sitio Web <a href="/">thecrafterplace.com</a> es ofrecer de forma recogida multitud de artículos relacionados con el juego sandbox Minecraft.
+        La finalidad del sitio Web <a href="/">buscadorempleo.org</a> es ofrecer de forma recogida multitud de ofertas de empleo ubicadas en España.
     </p>
 </section>
 <section>
@@ -27,15 +29,15 @@
     </h3>
     <p>
         La utilización del sitio Web le otorga la condición de Usuario, e implica la aceptación completa de todas las cláusulas y condiciones de uso incluidas en las páginas:
-        <p>
-            <a href="/aviso-legal">Aviso Legal</a>
-        </p>
-        <p>
-            <a href="/politica-de-privacidad">Política de Privacidad</a>
-        </p>
-        <p>
-            <a href="/cookies">Política de Cookies</a>
-        </p>
+        <li class="link dark-link" on:click={changeModal('legal')}>
+            Aviso Legal
+        </li>
+        <li class="link dark-link" on:click={changeModal('privacity')}>
+            Política de Privacidad
+        </li>
+        <li class="link dark-link" on:click={changeModal('cookies')}>
+            Política de Cookies
+        </li>
         <p>
         Si no estuviera conforme con todas y cada una de estas cláusulas y condiciones absténgase de utilizar este sitio Web.
         
@@ -46,7 +48,7 @@
         A tal efecto, usted está obligado y comprometido a NO utilizar cualquiera de los contenidos del sitio Web con fines o efectos ilícitos, prohibidos en este Aviso Legal o por la legislación vigente, lesivos de los derechos e intereses de terceros, o que de cualquier forma puedan dañar, inutilizar, sobrecargar, deteriorar o impedir la normal utilización de los contenidos, los equipos informáticos o los documentos, archivos y toda clase de contenidos almacenados en cualquier equipo informático propios o contratados por el Titular, de otros usuarios o de cualquier usuario de Internet.                
     </p>
     <p>
-        <a href="/">TheCrafterPlace</a> está altamente comprometido para cumplir con el compromiso de mantener su información segura. Usamos los sistemas más avanzados y los actualizamos constantemente para asegurarnos que no exista ningún acceso no autorizado.
+        <a class="dark-link" href="/">buscadorempleo.org</a> está altamente comprometido para cumplir con el compromiso de mantener su información segura. Usamos los sistemas más avanzados y los actualizamos constantemente para asegurarnos que no exista ningún acceso no autorizado.
     </p>
 </section>
 <section>
@@ -64,7 +66,7 @@
         Datos personales
     </h3>
     <p>
-        Usted puede consultar toda la información relativa al tratamiento de datos personales que recoge el Titular en la página de la <a href="/politica-de-privacidad">Política de Privacidad</a>.
+        Usted puede consultar toda la información relativa al tratamiento de datos personales que recoge el Titular en la página de la Política de Privacidad.
     </p>
 </section>
 <section>
@@ -97,22 +99,6 @@
     <p>
         La información que aparece en estos enlaces de afiliados o los anuncios insertados, son facilitados por los propios anunciantes, por lo que Titular no se hace responsable de posibles inexactitudes o errores que pudieran contener los anuncios, ni garantiza en modo alguno la experiencia, integridad o responsabilidad de los anunciantes o la calidad de sus productos y/o servicios.
     </p>
-</section>
-<section>
-    <h3>
-        Aviso legal de Amazon Afiliados
-    </h3>
-    <p>
-        En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.
-        </p>
-</section>
-<section>
-    <h3>
-        Aviso legal de eBay Partner Network 
-    </h3>
-    <p>
-        En calidad de Afiliado de eBay Partner Network, obtengo ingresos por las compras adscritas y los anuncios mostrados que cumplen los requisitos aplicables.
-        </p>
 </section>
 <section>
     <h3>
@@ -158,6 +144,9 @@
         Contacto
     </h3>
     <p>
-        En caso de que usted tenga cualquier duda acerca de estas Condiciones legales o quiera realizar cualquier comentario sobre este sitio Web, puede enviar un mensaje de correo electrónico a la dirección <a href="mailto:thecrafterplace@gmail.com">thecrafterplace@gmail.com</a>.
+        En caso de que usted tenga cualquier duda acerca de estas Condiciones legales o quiera realizar cualquier comentario sobre este sitio Web, puede enviar un mensaje de correo electrónico a la dirección <a class="dark-link" href="mailto:buscadorempleoweb@gmail.com">buscadorempleoweb@gmail.com</a>.
     </p>
 </section>
+
+<style>
+</style>

@@ -14,10 +14,11 @@
         <a href="mailto:buscadorempleoweb@gmail.com">contacto</a>
     </p>
     <p class="link" on:click={() => changeModal('legal')}>aviso legal</p>
+    <p class="link" on:click={() => changeModal('privacity')}>política de privacidad</p>
+    <p class="link" on:click={() => changeModal('cookies')}>uso de cookies</p>
 
     {#if isModal}
-        <Modal modal={isModal} {changeModal}/>
-
+        <Modal modal={isModal} {changeModal} />
     {/if}
 </footer>
 
@@ -31,10 +32,21 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-wrap: wrap;
     }
     footer p:not(:nth-of-type(1))::before{
         content: '|';
         margin: 0 1rem;
+    }
+
+    @media (max-width: 500px){
+        footer{
+            height: auto;
+            flex-direction: column;
+        }
+        footer p:not(:nth-of-type(1))::before{
+            content: '';
+            margin: 0;
+            padding: 0;
+        }
     }
 </style>

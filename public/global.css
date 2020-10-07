@@ -1,6 +1,4 @@
 *, *::before, *::after{
-	margin: 0;
-	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Piazzolla', serif;
 }
@@ -16,10 +14,15 @@ a:hover, .link:hover{
 	font-weight: bold;
 }
 
+.dark-link:hover{
+	color: #297aa3
+}
+
 body{
+	margin: 0;
+	padding: 0;
 	color: #fff;
 	min-height: 100vh;
-
 	/*Gradient*/
 	background: #297aa3;  /* fallback for old browsers */
 	background: -webkit-linear-gradient(to top left, #297aa3, hsl(200, 70%, 50%));   /* Chrome 10-25, Safari 5.1-6 */

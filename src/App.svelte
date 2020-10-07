@@ -39,37 +39,42 @@
 
 
 	function filtrarResultados(searchItem){
-		// console.log(search)
+		searchItem = searchItem.trim()
+		// console.log('search', search)
+
+		filteredJobs = jobs
+		pages = 1
+
 		if(searchItem !== ''){
-			filteredJobs = jobs
-			pages = 1
 
 			const titleFilteredJobs = filteredJobs.filter(job => job.title.toLowerCase().includes(searchItem))
-			// console.log(titleFilteredJobs.length);
+			// console.log('titleFilteredJobs.length', titleFilteredJobs.length);
 			
 			const companyFilteredJobs = filteredJobs.filter(job => job.company.toLowerCase().includes(searchItem))
-			// console.log(companyFilteredJobs.length);
+			// console.log('companyFilteredJobs.length', companyFilteredJobs.length);
 			
 			const locationFilteredJobs = filteredJobs.filter(job => job.location.toLowerCase().includes(searchItem))
-			// console.log(locationFilteredJobs.length);
+			// console.log('locationFilteredJobs.length', locationFilteredJobs.length);
 
 			if(titleFilteredJobs.length >= companyFilteredJobs.length){
 				if(titleFilteredJobs.length >= locationFilteredJobs.length){
 					filteredJobs = titleFilteredJobs
 				}else{
-					if(companyFilteredJobs.length >= locationFilteredJobs.length){
-						filteredJobs = companyFilteredJobs
-					}else{
-						filteredJobs = locationFilteredJobs
-					}
+				filteredJobs = locationFilteredJobs
 				}
+			}else if(companyFilteredJobs.length >= locationFilteredJobs.length){				
+				filteredJobs = companyFilteredJobs
+			}else{
+				filteredJobs = locationFilteredJobs
 			}
-			
-			filteredJobs.sort((a, b) => b.createdAt - a.createdAt)
-
-			jobsToShow = filteredJobs.slice(0, RESULTS_PER_PAGE * pages)
 
 		}
+
+		// console.log('filteredJobs.length', filteredJobs.length);
+		
+		filteredJobs.sort((a, b) => b.createdAt - a.createdAt)
+
+		jobsToShow = filteredJobs.slice(0, RESULTS_PER_PAGE * pages)
 
 	}
 
@@ -77,9 +82,6 @@
 		pages ++
 		
 		jobsToShow = filteredJobs.slice(0, RESULTS_PER_PAGE * pages)
-
-		// jobsToShow = (search === '') ?  jobs.slice(0, RESULTS_PER_PAGE * pages) : 
-		// filteredJobs.slice(0, RESULTS_PER_PAGE * pages)
 		
 	}
 
@@ -95,12 +97,19 @@
 
 <main>
 
+	
 	<div class="search">
-		<input type="text" placeholder="Filtrar resultados" bind:value={search} on:input={filtrarResultados(search.trim())}>
+		<h1>
+			Portal dedicado a mostrar ofertas de trabajo en España. 
+		</h1>
+		<h2>
+			Localiza las ofertas que más te interesan filtrando por puesto, compañía o localidad.
+		</h2>
+		<input type="text" placeholder='Filtrar resultados. Ej: "sevilla", "jardinero", "amazon", ... ' bind:value={search} on:input={filtrarResultados(search)}>
 		<div class="num-results">
 			{#if (search.trim() === '')}
 				{jobs.length} ofertas de trabajo
-				{:else}
+			{:else}
 				{#if filteredJobs.length > 1}
 					{filteredJobs.length} ofertas encontradas
 				{:else if filteredJobs.length === 1}
@@ -110,7 +119,7 @@
 		</div>
 	</div>
 	
-	<div class="jobs">
+	<div class="jobs" >
 		{#if (search.trim()) === ''}
 			{#each jobsToShow as job}
 				<Job {job} />
@@ -131,7 +140,7 @@
 		{/if}
 	</div>
 
-	{#if jobsToShow.length % RESULTS_PER_PAGE === 0}
+	{#if jobsToShow.length && jobsToShow.length % RESULTS_PER_PAGE === 0}
 		<div class="more-jobs link" on:click={handleClickMoreJobs}>
 			mostrar más<span>&#8595</span>
 		</div>
@@ -148,10 +157,11 @@
 	} */
 	header{
 		display: flex;
-		height: 5rem;
+		height: 6rem;
 		justify-content: center;
 		align-items: center;
 		text-align: center;
+		padding: 0 1rem;
 		/* margin: 2em 1em 1em 1em; */
 	}
 	header .dot{
@@ -177,9 +187,15 @@
 		margin: 0 auto;
 		max-width: 500px;
 	}
+	.search h1{
+		font-size: 1.5em;
+	}
+	.search h2{
+		font-size: 1.2em;
+	}
 	.search input{
 		padding: .7rem;
-		min-width: 30em;
+		/* max-width: 500px; */
 		margin-bottom: 1rem;
 		border: none;
 		outline: none;
@@ -192,10 +208,11 @@
 		margin-bottom:1rem;
 	}
 	main{
-		min-height: calc(100vh - 10rem);
+		max-width: 1000px;
+		padding: 0 1rem;
+		min-height: calc(100vh - 11rem);
 	}
 	main .jobs{
-		max-width: 1000px;
 		margin: 0 auto;
 		display: flex;
 		justify-content: center;
@@ -218,5 +235,13 @@
 	.more-jobs:hover{
 		background-color: rgba(255, 255, 255, 0.1);
 		border: 2px solid rgba(255, 255, 255, 0.5);
+	}
+	@media (max-width: 500px){
+		header{
+			font-size: .8em;
+		}
+		header img{
+			width: 2.5rem;
+		}
 	}
 </style>
