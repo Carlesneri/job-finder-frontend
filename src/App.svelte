@@ -3,11 +3,14 @@
 	import Footer from './Footer.svelte'
 	import firebase from 'firebase/app'
 	import 'firebase/firebase-firestore'
+	import 'firebase/firebase-auth'
 	import { firebaseConfig } from '../firebaseConfig.js'
 
 	const RESULTS_PER_PAGE = 18
 
 	firebase.initializeApp(firebaseConfig)
+
+	firebase.auth().signInAnonymously().catch(err => console.log(err))
 
 	const jobsDB = firebase.firestore()
 
@@ -152,9 +155,6 @@
 <Footer />
 
 <style>
-	/* main{
-		position: relative;
-	} */
 	header{
 		display: flex;
 		height: 6rem;
@@ -162,7 +162,6 @@
 		align-items: center;
 		text-align: center;
 		padding: 0 1rem;
-		/* margin: 2em 1em 1em 1em; */
 	}
 	header .dot{
 		font-size: 1.2em;
@@ -172,9 +171,7 @@
 		color: #ff0000;
 	}
 	header img{
-		/* border: 2px solid white; */
 		background-color: #fff;
-		/* box-shadow: 2px 0px 0px 0px white; */
 		border-radius: 50%;
 		padding: .2rem;
 		width: 3.5em;
@@ -195,7 +192,6 @@
 	}
 	.search input{
 		padding: .7rem;
-		/* max-width: 500px; */
 		margin-bottom: 1rem;
 		border: none;
 		outline: none;
@@ -211,6 +207,7 @@
 		max-width: 1000px;
 		padding: 0 1rem;
 		min-height: calc(100vh - 11rem);
+		margin: 0 auto;
 	}
 	main .jobs{
 		margin: 0 auto;

@@ -60,7 +60,7 @@
 		border-radius: 7px;
 		width: 15rem;
         height: 10rem;
-        box-shadow:  0px 5px 15px -10px white;
+        box-shadow:  5px 5px 15px -10px white;
         overflow: hidden;
         display: flex;
         flex-direction: column;
