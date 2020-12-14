@@ -1,37 +1,46 @@
 <script>
-	import { Navigate } from 'svelte-router-spa'
+    import { link } from 'svelte-routing'
+    
+    export let title = '';
+    export let search = '';
+
 </script>
 <div class="card">
-    <Navigate to="last-jobs">
+    <a href="/ultimos/{search}" use:link >
         <div class="card-title">
             <h3>
-                Últimas ofertas
+                {title}
             </h3>
         </div>
-        <div class="card-body">
+        <!-- <div class="card-body">
             <h5>
             </h5>
             <p>
             </p>
-        </div>
-    </Navigate>
+        </div> -->
+    </a>
 </div>
 
 <style>
 	.card{
         /* cursor: pointer; */
-        color: #222;
-        background-image: linear-gradient(to bottom right, hsl(100, 50%, 70%), hsl(100, 40%, 60%));
+        color: rgb(44, 44, 44);
+        background-image: linear-gradient(to bottom right, hsl(300, 50%, 70%), hsl(100, 40%, 60%));
         margin: .6rem;
         padding: 2em;
 		border-radius: 7px;
         width: fit-content;
+        max-width: 30%; 
+        min-width: 130px;
+        /* height: fit-content; */
 		/* width: 15rem;
         height: 10rem; */
         overflow: hidden;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
+        text-align: center;
         transition: all .3s ease;
     }
     .card:hover{

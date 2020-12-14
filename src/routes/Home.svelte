@@ -1,7 +1,7 @@
 <script>
-	import Header from './partials/Header.svelte'
-	import Card from './partials/Card.svelte'
-	import Footer from './Footer.svelte'
+	import Header from '../partials/Header.svelte'
+	import Card from '../partials/Card.svelte'
+	import Footer from '../Footer.svelte'
 </script>
 
 <Header />
@@ -16,9 +16,12 @@
 			Recopilamos para tí gran cantidad de ofertas laborales para que encuentre lo que buscas sin perder tiempo en miles de webs.
 		</h2>
 	</div>
-	<Card />	
+	<div class="cards">
+		<Card title={"Últimas ofertas de empleo"} />	
+		<Card title={"Empleo en Madrid"} search={"madrid"}/>	
+		<Card title={"Empleo en Barcelona"} search={"barcelona"}/>	
+	</div>
 </main>
-
 
 <Footer />
 
@@ -41,5 +44,12 @@
 	}
 	.home h2{
 		font-size: 1.2em;
+	}
+	.cards {
+		max-width: 700px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin: 1rem auto;
 	}
 </style>

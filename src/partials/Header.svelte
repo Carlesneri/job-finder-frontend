@@ -1,13 +1,13 @@
 <script>
-	import { Navigate } from 'svelte-router-spa';
+	import { link } from 'svelte-routing'
 </script>
 
 <header>
-    <img src="logo.png" alt="">
+    <img src="/logo.png" alt="">
     <h1>
-        <Navigate to="/">
+		<a href="/" use:link >
             buscadorempleo<span class="dot">.</span><span class="org">org</span>
-        </Navigate>
+		</a>
     </h1>
 </header>
 
@@ -18,7 +18,8 @@
 		justify-content: center;
 		align-items: center;
 		text-align: center;
-		padding: 0 1rem;
+		margin-top: 1rem;
+		padding: 1rem;
 	}
 	header .dot{
 		font-size: 1.2em;

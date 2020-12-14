@@ -1,4 +1,4 @@
-import Home from './Home.svelte'
+import Home from './routes/Home.svelte'
 import LastJobs from './routes/LastJobs.svelte'
 
 const routes = [
@@ -8,7 +8,7 @@ const routes = [
     },
     {
         name: '/last-jobs',
-        component: LastJobs
+        component: LastJobs,
     },
 ]
 

@@ -15,7 +15,7 @@
 
 	let jobsToShow = []
 	
-	let search = ''
+	export let search = ''
 
 	jobsDB.collection('jobs').onSnapshot(querysnapshot => {
 		let newJobs = []
@@ -27,7 +27,8 @@
 
 		filteredJobs = jobs
 		
-		if(search.trim() === '') filtrarResultados(search.trim())
+		// if(search.trim() === '') 
+		filtrarResultados(search.trim())
 
 		jobsToShow = filteredJobs.slice(0, RESULTS_PER_PAGE * pages)
 
