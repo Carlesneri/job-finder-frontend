@@ -1,11 +1,6 @@
 <script>
-    import Modal from './Modal.svelte'
 
-    let isModal = false
-
-    function changeModal(modal){
-        isModal = modal
-    }
+    export let changeModal
 
 </script>
 
@@ -17,9 +12,9 @@
     <p class="link" on:click={() => changeModal('privacity')}>política de privacidad</p>
     <p class="link" on:click={() => changeModal('cookies')}>uso de cookies</p>
 
-    {#if isModal}
+    <!-- {#if isModal}
         <Modal modal={isModal} {changeModal} />
-    {/if}
+    {/if} -->
 </footer>
 
 <style>
@@ -32,6 +27,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 1rem;
     }
     footer p:not(:nth-of-type(1))::before{
         content: '|';

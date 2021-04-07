@@ -3,14 +3,17 @@
     
     export let title = '';
     export let search = '';
+    export let isPrincipal = false
+
+    
 
 </script>
-<div class="card">
+<div class="card {isPrincipal ? 'principal': null}" >
     <a href="/ultimos/{search}" use:link >
         <div class="card-title">
-            <h3>
+            <h4>
                 {title}
-            </h3>
+            </h4>
         </div>
         <!-- <div class="card-body">
             <h5>
@@ -30,8 +33,8 @@
         padding: 2em;
 		border-radius: 7px;
         width: fit-content;
-        max-width: 30%; 
-        min-width: 130px;
+        max-width: 130px; 
+        /* min-width: 130px; */
         /* height: fit-content; */
 		/* width: 15rem;
         height: 10rem; */
@@ -43,27 +46,36 @@
         text-align: center;
         transition: all .3s ease;
     }
+    .card.principal {
+        font-size: 1.2em;
+        max-width: fit-content;
+    }
     .card:hover{
         color: rgb(255, 255, 150);
         box-shadow:  0px 0px 25px -10px rgb(255, 255, 150);
     }
+    h4{
+        transition: all .3s ease;
+    }
+    .card:hover h4{
+        color: rgb(255, 255, 150);
+    }
     .card-title{
         font-size: 1.3em;
-        /* height: 4rem; */
         overflow: hidden;
         margin: 0 .3em;
     }
-    .card-title h3{
+    .card-title h4{
         margin-top: 0;
     }
     /* .card:hover .card-title{
         height: auto
     } */
-    .card-body h5{
+    /* .card-body h5{
         height: 1.5rem;
         overflow: hidden;
         margin: 0 .3em;
-    }
+    } */
     /* .card:hover .card-body h5{
         height: auto
     } */

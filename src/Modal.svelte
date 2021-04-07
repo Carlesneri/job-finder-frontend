@@ -2,37 +2,49 @@
     import AvisoLegal from './AvisoLegal.svelte'
     import Privacity from './Privacity.svelte'
     import Cookies from './Cookies.svelte'
+    import JobModal from './JobModal.svelte';
+
     import { scale } from 'svelte/transition'
     
-    export let modal, changeModal
-
+    export let modal, changeModal, modalJob
         
 </script>
-
-<div class="modal" transition:scale>
-    <div class="modal-content">
-        {#if modal === 'legal'}
-            <AvisoLegal {changeModal}/>
-        {:else if  modal === 'privacity'}
-            <Privacity />
-        {:else if  modal === 'cookies'}
-            <Cookies />
-        {/if}
-        <button class="link" on:click={() => changeModal(false)}>
-            Cerrar
-        </button>
+<div class="modal-wrapper">
+    <div class="modal" transition:scale>
+        <div class="modal-content">
+            {#if modal === 'job'}
+                <JobModal job={modalJob} />
+            {:else if modal === 'legal'}
+                <AvisoLegal {changeModal}/>
+            {:else if  modal === 'privacity'}
+                <Privacity />
+            {:else if  modal === 'cookies'}
+                <Cookies />
+            {/if}
+            <button class="link" on:click={() => changeModal(false)}>
+                Cerrar
+            </button>
+        </div>
     </div>
 </div>
 
 <style>
-    .modal{
+    .modal-wrapper {
         position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+    .modal{
+        /* position: fixed; */
         max-width: 1000px;
         max-height: 100vh;
         min-width: 80%;
         min-height: 80%;
-        bottom: 0;
-        top: 0;
+        /* bottom: 0;
+        top: 0; */
         border-radius: 5px;
         margin: 2rem;
         overflow: auto;

@@ -149,4 +149,7 @@
 </section>
 
 <style>
+    a:hover {
+        color: var(--dark-link-color);
+    }
 </style>

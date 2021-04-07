@@ -3,9 +3,13 @@
 
     export let job
 
-    function openLink(link){
-        window.open(link, "_blank")
-    }
+    export let changeModal
+
+    // export let modalJob = null
+
+    // function openLink(link){
+    //     window.open(link, "_blank")
+    // }
 
     let randomColor = () => Math.floor(Math.random()*360)
 
@@ -17,19 +21,18 @@
 
 </script>
 
-<div on:click={openLink(job.link)} class="card" style="--bg-color: {bgColor}" transition:scale >
+<!-- <div on:click={openLink(job.link)} class="card" style="--bg-color: {bgColor}" transition:scale > -->
+<div on:click={() => changeModal('job', job)} class="card" style="--bg-color: {bgColor}" transition:scale >
     <div class="card-title">
         <h3>
             {job.title}
         </h3>
-    </div>
-    <div class="card-body">
         <h5>
             {job.company}
         </h5>
-        <p>
+        <h6>
             {job.location}
-        </p>
+        </h6>
     </div>
     <div class="card-footer">
         <small>
@@ -70,38 +73,23 @@
         -webkit-transition: all .3s ease;
         -o-transition: all .3s ease;
     }
-    .card:hover{
-        background-color: hsl(var(--bg-color), 50%, 75%);
-        min-height: 10rem;
-        height: 15rem;
-        justify-content: flex-start;
-    }
     .card-title{
-        height: 4rem;
+        height: 8rem;
         overflow: hidden;
         margin: 0 .3em;
     }
     .card-title h3{
         margin-top: 0;
+        font-size: 1.2rem;
     }
-    .card:hover .card-title{
-        height: auto
-    }
-    .card-body h5{
+    .card-title h5{
         height: 1.5rem;
         overflow: hidden;
-        margin: 0 .3em;
     }
-    .card:hover .card-body h5{
-        height: auto
-    }
-    .card-body p{
+    .card-title h6{
         height: 1.5rem;
+        font-size: .8rem;
         overflow: hidden;
-        margin: .3em;
-    }
-    .card:hover .card-body p{
-        height: auto
     }
     .card-footer{
         font-weight: bold;
@@ -110,13 +98,9 @@
         margin: 0 .3em;
         flex-shrink: 1;
     }
-    .card:hover .card-footer{
-        height: auto;
-        margin-top: auto;
-    }
 
     @media (max-width: 500px){
-        .card, .card-title, .card-body h5, .card-body p, .card-footer{
+        .card, .card-title, .card-title h5, .card-title h6, .card-footer{
             height: auto;
         }
     }
